@@ -41,10 +41,10 @@ def merge(arr,l,m,r):
     for j in range(0 , n2):
         R[j] = arr[m + 1 + j]
 
-    # Merge the temp arrays back into arr[l..r]
-    i = 0     # Initial index of first subarray
-    j = 0     # Initial index of second subarray
-    k = l     # Initial index of merged subarray
+    
+    i = 0     
+    j = 0     
+    k = l     
 
     while i < n1 and j < n2 :
         clock.tick(15)
@@ -69,7 +69,7 @@ def merge(arr,l,m,r):
             #clock.tick(20)
 
         else:
-            #rekt=(40+24*(m+j+1),0,20,595)
+            
             pygame.draw.rect(screen,white,(20+12*(k),150,10,595))
             pygame.draw.rect(screen,white,(20+12*(m+j+1),150,10,595))
             pygame.draw.rect(screen,lblue,(20+12*(k),595-arr[k],10,arr[k]))
@@ -91,8 +91,6 @@ def merge(arr,l,m,r):
             #clock.tick(20)
         k += 1
 
-    # Copy the remaining elements of L[], if there
-    # are any
     while i < n1:
         clock.tick(15)
         pygame.draw.rect(screen,white,(20+12*(l+i),150,10,595))
@@ -111,8 +109,7 @@ def merge(arr,l,m,r):
         #clock.tick(20)
         k += 1
 
-    # Copy the remaining elements of R[], if there
-    # are any
+    
     while j < n2:
         clock.tick(15)
         pygame.draw.rect(screen,white,(20+12*(m+j+1),150,10,595))
