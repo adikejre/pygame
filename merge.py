@@ -35,9 +35,9 @@ def merge(arr,l,m,r):
     for j in range(0 , n2):
         R[j] = arr[m + 1 + j]
 
-    i = 0     
-    j = 0     
-    k = l     
+    i = 0
+    j = 0
+    k = l
 
     while i < n1 and j < n2 :
         clock.tick(5)
@@ -84,7 +84,7 @@ def merge(arr,l,m,r):
             #clock.tick(20)
         k += 1
 
-  
+
     while i < n1:
         clock.tick(5)
         pygame.draw.rect(screen,white,(40+24*(l+i),0,20,595))
@@ -103,7 +103,7 @@ def merge(arr,l,m,r):
         #clock.tick(20)
         k += 1
 
-    
+
     while j < n2:
         clock.tick(5)
         pygame.draw.rect(screen,white,(40+24*(m+j+1),0,20,595))
@@ -149,44 +149,6 @@ while run:
     while(x<1):
         mergesort(h,0,n-1)
         x+=1
-
-
-#    if(p<n):
-#        q=p+1
-#            if(h[q]<h[p]):
-#
-#
-#                pygame.draw.rect(screen,blue,(40+24*p,595-h[p],20,h[p]))
-#                pygame.draw.rect(screen,blue,(40+24*q,595-h[q],20,h[q]))
-#                pygame.draw.rect(screen,blue,(40+24*(q-1),595-h[q-1],20,h[q-1]))
-#                pygame.display.update()
-#                clock.tick(10)
-#                q+=1
-#            else:
-#                pygame.draw.rect(screen,lblue,(40+24*q,595-h[q],20,h[q]))
-#                if(q>0):
-#                    pygame.draw.rect(screen,blue,(40+24*(q-1),595-h[q-1],20,h[q-1]))
-#                pygame.display.update()
-#                clock.tick(10)
-#                q+=1
-
-#        p+=1
-
-
-
-
-
-    #if(k<n):
-        #if(k>0):
-            #pygame.draw.rect(screen,blue,(40+24*(k-1),595-h[k-1],20,h[k-1]))
-        #pygame.draw.rect(screen,lblue,(40+24*k,595-h[k],20,h[k]))
-        #k+=1
-
-        #pygame.display.update()
-        #clock.tick(5)
-        #time.sleep(100)
-
-
 
     #mouse=pygame.mouse.get_pos()
     #print(mouse)
