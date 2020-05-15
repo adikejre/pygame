@@ -8,10 +8,12 @@ pygame.display.set_caption('visualization')
 run=True
 blue=(0,0,150)
 lblue=(229,204,255)
-white=(255,255,255)
+whit=(255,255,255)
+skin=(255,204,205)
 red=(255,255,153)
 green=(153,255,204)
 black=(0,0,0)
+brown=(100,100,100)
 h=[]
 
 i=0
@@ -40,10 +42,14 @@ def merge(arr,l,m,r):
     while i < n1 and j < n2 :
 
         clock.tick(15)
+        for event in pygame.event.get():
+            if event.type==pygame.QUIT:
+                run=False
+                return
         if L[i] <= R[j]:
 
-            pygame.draw.rect(screen,white,(20+12*(l+i),150,10,595))
-            pygame.draw.rect(screen,white,(20+12*(m+j+1),250,10,595))
+            pygame.draw.rect(screen,skin,(20+12*(l+i),150,10,595))
+            pygame.draw.rect(screen,skin,(20+12*(m+j+1),250,10,595))
             pygame.draw.rect(screen,lblue,(20+12*(l+i),595-arr[l+i],10,arr[l+i]))
             pygame.draw.rect(screen,lblue,(20+12*(m+j+1),595-arr[m+j+1],10,arr[m+j+1]))
             pygame.display.update()
@@ -53,7 +59,7 @@ def merge(arr,l,m,r):
             pygame.draw.rect(screen,blue,(20+12*(m+j+1),595-arr[m+j+1],10,arr[m+j+1]))
             pygame.display.update()
             arr[k] = L[i]
-            pygame.draw.rect(screen,white,(20+12*(k),150,10,595))
+            pygame.draw.rect(screen,skin,(20+12*(k),150,10,595))
             pygame.draw.rect(screen,blue,(20+12*(k),595-arr[k],10,arr[k]))
 
             i += 1
@@ -63,8 +69,8 @@ def merge(arr,l,m,r):
 
         else:
             #rekt=(40+24*(m+j+1),0,20,595)
-            pygame.draw.rect(screen,white,(20+12*(k),150,10,595))
-            pygame.draw.rect(screen,white,(20+12*(m+j+1),150,10,595))
+            pygame.draw.rect(screen,skin,(20+12*(k),150,10,595))
+            pygame.draw.rect(screen,skin,(20+12*(m+j+1),150,10,595))
             pygame.draw.rect(screen,lblue,(20+12*(k),595-arr[k],10,arr[k]))
             pygame.draw.rect(screen,lblue,(20+12*(m+j+1),595-arr[k],10,arr[k]))
             pygame.display.update()
@@ -74,7 +80,7 @@ def merge(arr,l,m,r):
             pygame.draw.rect(screen,blue,(20+12*(m+j+1),595-arr[k],10,arr[k]))
             pygame.display.update()
             arr[k] = R[j]
-            pygame.draw.rect(screen,white,(20+12*(k),150,10,595))
+            pygame.draw.rect(screen,skin,(20+12*(k),150,10,595))
             pygame.draw.rect(screen,blue,(20+12*(k),595-arr[k],10,arr[k]))
             j += 1
 
@@ -86,8 +92,11 @@ def merge(arr,l,m,r):
 
     while i < n1:
         clock.tick(15)
-
-        pygame.draw.rect(screen,white,(20+12*(l+i),150,10,595))
+        for event in pygame.event.get():
+            if event.type==pygame.QUIT:
+                run=False
+                return
+        pygame.draw.rect(screen,skin,(20+12*(l+i),150,10,595))
         pygame.draw.rect(screen,lblue,(20+12*(l+i),595-arr[l+i],10,arr[l+i]))
 
         pygame.display.update()
@@ -96,7 +105,7 @@ def merge(arr,l,m,r):
         pygame.draw.rect(screen,blue,(20+12*(l+i),595-arr[l+i],10,arr[l+i]))
         pygame.display.update()
         arr[k] = L[i]
-        pygame.draw.rect(screen,white,(20+12*(k),150,10,595))
+        pygame.draw.rect(screen,skin,(20+12*(k),150,10,595))
         pygame.draw.rect(screen,blue,(20+12*(k),595-arr[k],10,arr[k]))
         i += 1
         pygame.display.update()
@@ -105,8 +114,11 @@ def merge(arr,l,m,r):
 
     while j < n2:
         clock.tick(15)
-
-        pygame.draw.rect(screen,white,(20+12*(m+j+1),150,10,595))
+        for event in pygame.event.get():
+            if event.type==pygame.QUIT:
+                run=False
+                return
+        pygame.draw.rect(screen,skin,(20+12*(m+j+1),150,10,595))
         pygame.draw.rect(screen,lblue,(20+12*(j+m+1),595-arr[j+m+1],10,arr[j+m+1]))
 
         pygame.display.update()
@@ -115,7 +127,7 @@ def merge(arr,l,m,r):
         pygame.draw.rect(screen,blue,(20+12*(m+j+1),595-arr[j+m+1],10,arr[j+m+1]))
         pygame.display.update()
         arr[k] = R[j]
-        pygame.draw.rect(screen,white,(20+12*(k),150,10,595))
+        pygame.draw.rect(screen,skin,(20+12*(k),150,10,595))
         pygame.draw.rect(screen,blue,(20+12*(k),595-arr[k],10,arr[k]))
         j += 1
 
@@ -127,6 +139,10 @@ def merge(arr,l,m,r):
 def mergesort(ar,l,r):
 
     if l<r:
+        for event in pygame.event.get():
+            if event.type==pygame.QUIT:
+                run=False
+                return
         m=(l+r)//2
         mergesort(ar,l,m)
         mergesort(ar,m+1,r)
@@ -136,14 +152,24 @@ def mergesort(ar,l,r):
 def partition(arr,low,high):
     clock.tick(20)
     pivot=arr[high]
+
+    pygame.draw.rect(screen,brown,(20+12*(high),595-arr[high],10,arr[high]))
+    pygame.time.wait(200)
+    pygame.display.update()
+    pygame.time.wait(500)
+    pygame.draw.rect(screen,blue,(20+12*(high),595-arr[high],10,arr[high]))
+    pygame.display.update()
     i=low-1
     j=low
     while(j<=high):
-
+        for event in pygame.event.get():
+            if event.type==pygame.QUIT:
+                run=False
+                return
         pygame.draw.rect(screen,lblue,(20+12*(j),595-arr[j],10,arr[j]))
         #pygame.draw.rect(screen,lblue,(20+12*(high),595-pivot,10,pivot))
         pygame.display.update()
-        pygame.time.wait(100)
+        pygame.time.wait(50)
         pygame.draw.rect(screen,blue,(20+12*(j),595-arr[j],10,arr[j]))
         #pygame.draw.rect(screen,blue,(20+12*(high),595-pivot,10,pivot))
         pygame.display.update()
@@ -157,26 +183,36 @@ def partition(arr,low,high):
             pygame.draw.rect(screen,blue,(20+12*(j),595-arr[j],10,arr[j]))
             pygame.display.update()
             arr[i],arr[j]=arr[j],arr[i]
-            pygame.draw.rect(screen,white,(20+12*(i),150,10,595))
+            pygame.draw.rect(screen,skin,(20+12*(i),150,10,595))
             pygame.display.update()
             pygame.draw.rect(screen,blue,(20+12*(i),595-arr[i],10,arr[i]))
-            pygame.draw.rect(screen,white,(20+12*(j),150,10,595))
+            pygame.draw.rect(screen,skin,(20+12*(j),150,10,595))
             pygame.display.update()
             pygame.draw.rect(screen,blue,(20+12*(j),595-arr[j],10,arr[j]))
             pygame.display.update()
         j+=1
 
     arr[i+1],arr[high]=arr[high],arr[i+1]
-    pygame.draw.rect(screen,white,(20+12*(i+1),150,10,595))
+    pygame.draw.rect(screen,skin,(20+12*(i+1),150,10,595))
     pygame.display.update()
     pygame.draw.rect(screen,blue,(20+12*(i+1),595-arr[i+1],10,arr[i+1]))
-    pygame.draw.rect(screen,white,(20+12*(high),150,10,595))
+    pygame.draw.rect(screen,skin,(20+12*(high),150,10,595))
     pygame.display.update()
     pygame.draw.rect(screen,blue,(20+12*(high),595-arr[high],10,arr[high]))
+    pygame.display.update()
+    pygame.draw.rect(screen,black,(20+12*(i+1),595-arr[i+1],10,arr[i+1]))
+    pygame.time.wait(200)
+    pygame.display.update()
+    pygame.time.wait(500)
+    pygame.draw.rect(screen,blue,(20+12*(i+1),595-arr[i+1],10,arr[i+1]))
     pygame.display.update()
     return i+1
 
 def quicksort(arr,low,high):
+    for event in pygame.event.get():
+        if event.type==pygame.QUIT:
+            run=False
+            return
     if (low<high):
         pi=partition(arr,low,high)
         quicksort(arr,low,pi-1)
@@ -202,9 +238,9 @@ def bubble(arr,n):
             pygame.display.update()
             if(arr[j]>arr[j+1]):
                 arr[j],arr[j+1]=arr[j+1],arr[j]
-                pygame.draw.rect(screen,white,(20+12*(j),150,10,595))
+                pygame.draw.rect(screen,skin,(20+12*(j),150,10,595))
                 pygame.draw.rect(screen,blue,(20+12*(j),595-arr[j],10,arr[j]))
-                pygame.draw.rect(screen,white,(20+12*(j+1),150,10,595))
+                pygame.draw.rect(screen,skin,(20+12*(j+1),150,10,595))
                 pygame.draw.rect(screen,blue,(20+12*(j+1),595-arr[j+1],10,arr[j+1]))
                 pygame.display.update()
 
@@ -238,9 +274,9 @@ def heapify(arr,n,i):
             largest=r
     if(largest!=i):
         arr[i],arr[largest]=arr[largest],arr[i]
-        pygame.draw.rect(screen,white,(20+12*(i),150,10,595))
+        pygame.draw.rect(screen,skin,(20+12*(i),150,10,595))
         pygame.draw.rect(screen,blue,(20+12*(i),595-arr[i],10,arr[i]))
-        pygame.draw.rect(screen,white,(20+12*(largest),150,10,595))
+        pygame.draw.rect(screen,skin,(20+12*(largest),150,10,595))
         pygame.draw.rect(screen,blue,(20+12*(largest),595-arr[largest],10,arr[largest]))
         pygame.display.update()
         heapify(arr,n,largest)
@@ -255,9 +291,9 @@ def heapsort(arr,n):
     i=n-1
     while(i>0):
         arr[0],arr[i]=arr[i],arr[0]
-        pygame.draw.rect(screen,white,(20+12*(i),150,10,595))
+        pygame.draw.rect(screen,skin,(20+12*(i),150,10,595))
         pygame.draw.rect(screen,blue,(20+12*(i),595-arr[i],10,arr[i]))
-        pygame.draw.rect(screen,white,(20+12*(0),150,10,595))
+        pygame.draw.rect(screen,skin,(20+12*(0),150,10,595))
         pygame.draw.rect(screen,blue,(20+12*(0),595-arr[0],10,arr[0]))
         pygame.display.update()
         heapify(arr,i,0)
@@ -297,7 +333,7 @@ textRect4.center=(442,60)
 textRect5.center=(560,60)
 textRect6.center=(680,60)
 while run:
-    screen.fill((255,255,255))
+    screen.fill((255,204,205))
 
     i=0
     if(start==0):
@@ -364,6 +400,11 @@ while run:
 
                 start=0
                 h=[]
+                mer=[]
+                ins=[]
+                par=[]
+                bub=[]
+                hep=[]
                 n=random.randint(60,77)
                 i=0
                 while(i<n):
@@ -399,7 +440,7 @@ while run:
             if event.type==pygame.MOUSEBUTTONDOWN:
                 f=0
                 while(f<n):
-                    pygame.draw.rect(screen,white,(20+12*f,150,10,595))
+                    pygame.draw.rect(screen,skin,(20+12*f,150,10,595))
                     pygame.draw.rect(screen,blue,(20+12*f,595-h[f],10,h[f]))
                     f+=1
 
@@ -464,7 +505,7 @@ while run:
                 start=4
                 ff=0
                 while(ff<n):
-                    pygame.draw.rect(screen,white,(20+12*ff,150,10,595))
+                    pygame.draw.rect(screen,skin,(20+12*ff,150,10,595))
                     pygame.draw.rect(screen,blue,(20+12*ff,595-h[ff],10,h[ff]))
                     ff+=1
 
@@ -487,7 +528,7 @@ while run:
                 start=5
                 f2=0
                 while(f2<n):
-                    pygame.draw.rect(screen,white,(20+12*f2,150,10,595))
+                    pygame.draw.rect(screen,skin,(20+12*f2,150,10,595))
                     pygame.draw.rect(screen,blue,(20+12*f2,595-h[f2],10,h[f2]))
                     f2+=1
                 bubble(bub,n)
@@ -506,7 +547,7 @@ while run:
                 start=6
                 f3=0
                 while(f3<n):
-                    pygame.draw.rect(screen,white,(20+12*f3,150,10,595))
+                    pygame.draw.rect(screen,skin,(20+12*f3,150,10,595))
                     pygame.draw.rect(screen,blue,(20+12*f3,595-h[f3],10,h[f3]))
                     f3+=1
                 heapsort(hep,n)
