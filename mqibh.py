@@ -11,7 +11,9 @@ lblue=(229,204,255)
 whit=(255,255,255)
 skin=(255,204,205)
 red=(255,255,153)
+dark=(255,0,0)
 green=(153,255,204)
+dg=(0,255,0)
 black=(0,0,0)
 brown=(100,100,100)
 h=[]
@@ -153,7 +155,7 @@ def partition(arr,low,high):
     clock.tick(20)
     pivot=arr[high]
 
-    pygame.draw.rect(screen,brown,(20+12*(high),595-arr[high],10,arr[high]))
+    pygame.draw.rect(screen,dark,(20+12*(high),595-arr[high],10,arr[high]))
     pygame.time.wait(200)
     pygame.display.update()
     pygame.time.wait(500)
@@ -200,12 +202,13 @@ def partition(arr,low,high):
     pygame.display.update()
     pygame.draw.rect(screen,blue,(20+12*(high),595-arr[high],10,arr[high]))
     pygame.display.update()
-    pygame.draw.rect(screen,black,(20+12*(i+1),595-arr[i+1],10,arr[i+1]))
+    pygame.draw.rect(screen,dg,(20+12*(i+1),595-arr[i+1],10,arr[i+1]))
+
+    #pygame.display.update()
+    #pygame.time.wait(500)
+    #pygame.draw.rect(screen,blue,(20+12*(i+1),595-arr[i+1],10,arr[i+1]))
+    pygame.display.update()
     pygame.time.wait(200)
-    pygame.display.update()
-    pygame.time.wait(500)
-    pygame.draw.rect(screen,blue,(20+12*(i+1),595-arr[i+1],10,arr[i+1]))
-    pygame.display.update()
     return i+1
 
 def quicksort(arr,low,high):
