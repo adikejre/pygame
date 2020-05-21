@@ -156,9 +156,9 @@ def partition(arr,low,high):
     pivot=arr[high]
 
     pygame.draw.rect(screen,dark,(20+12*(high),595-arr[high],10,arr[high]))
-    pygame.time.wait(200)
+
     pygame.display.update()
-    pygame.time.wait(500)
+    pygame.time.wait(400)
     pygame.draw.rect(screen,blue,(20+12*(high),595-arr[high],10,arr[high]))
     pygame.display.update()
     i=low-1
@@ -171,7 +171,7 @@ def partition(arr,low,high):
         pygame.draw.rect(screen,lblue,(20+12*(j),595-arr[j],10,arr[j]))
         #pygame.draw.rect(screen,lblue,(20+12*(high),595-pivot,10,pivot))
         pygame.display.update()
-        pygame.time.wait(50)
+        pygame.time.wait(30)
         pygame.draw.rect(screen,blue,(20+12*(j),595-arr[j],10,arr[j]))
         #pygame.draw.rect(screen,blue,(20+12*(high),595-pivot,10,pivot))
         pygame.display.update()
@@ -180,7 +180,7 @@ def partition(arr,low,high):
             pygame.draw.rect(screen,lblue,(20+12*(i),595-arr[i],10,arr[i]))
             pygame.draw.rect(screen,lblue,(20+12*(j),595-arr[j],10,arr[j]))
             pygame.display.update()
-            pygame.time.wait(50)
+            pygame.time.wait(30)
             pygame.draw.rect(screen,blue,(20+12*(i),595-arr[i],10,arr[i]))
             pygame.draw.rect(screen,blue,(20+12*(j),595-arr[j],10,arr[j]))
             pygame.display.update()
@@ -451,6 +451,14 @@ while run:
 
 
                 mergesort(mer,0,n-1)
+                f=0
+                while(f<n):
+
+                    pygame.draw.rect(screen,dg,(20+12*f,595-mer[f],10,mer[f]))
+                    f+=1
+                pygame.display.update()
+                pygame.time.wait(100)
+
 
     i=0
 
@@ -514,6 +522,13 @@ while run:
 
 
                 quicksort(par,0,n-1)
+                ff=0
+                while(ff<n):
+
+                    pygame.draw.rect(screen,dg,(20+12*ff,595-par[ff],10,par[ff]))
+                    ff+=1
+                pygame.display.update()
+                pygame.time.wait(450)
 
     i=0
     if(start==4):
